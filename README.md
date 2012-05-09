@@ -1,4 +1,0 @@
-Jpoker
-======
-
-TTR Project
