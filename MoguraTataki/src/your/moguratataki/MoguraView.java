@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 //두더지 잡기 뷰
-public class MoguraView extends SurfaceView 
+public abstract class MoguraView extends SurfaceView 
 	implements SurfaceHolder.Callback,Runnable {
 		//장면 정수 (1)
 		private final static int
