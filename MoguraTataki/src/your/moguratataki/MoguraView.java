@@ -35,7 +35,7 @@ public class MoguraView extends SurfaceView
 			//그림읽기
 			Resources r=getResources();
 			Mogura.bmp[0]=BitmapFactory.decodeResource(r,R.drawable.mogura0);
-			Mogura.bmp[1]=BitmapFactory.decodeResource(r, R.drawable.mogua1);
+			Mogura.bmp[1]=BitmapFactory.decodeResource(r, R.drawable.mogura1);
 			Mogura.bmp[2]=BitmapFactory.decodeResource(r,R.drawable.mogura2);
 			
 			//그래픽스의 생성
