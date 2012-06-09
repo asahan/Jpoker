@@ -11,6 +11,7 @@ public class MoguraTatakiActivity extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setContentView(new MoguraView(this));
     }
 }
