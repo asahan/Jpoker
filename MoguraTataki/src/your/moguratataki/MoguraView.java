@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 //두더지 잡기 뷰
-public abstract class MoguraView extends SurfaceView 
+public class MoguraView extends SurfaceView 
 	implements SurfaceHolder.Callback,Runnable {
 		//장면 정수 (1)
 		private final static int
@@ -27,6 +27,7 @@ public abstract class MoguraView extends SurfaceView
 		private int score; //점수
 		private long endTime; //종료시간
 		private ArrayList<Mogura> moguras; //두더지
+		private Bitmap[] bmp=new Bitmap[1];
 		
 		//생성자
 		public MoguraView(Context context) {
@@ -37,6 +38,7 @@ public abstract class MoguraView extends SurfaceView
 			Mogura.bmp[0]=BitmapFactory.decodeResource(r,R.drawable.mogura0);
 			Mogura.bmp[1]=BitmapFactory.decodeResource(r, R.drawable.mogura1);
 			Mogura.bmp[2]=BitmapFactory.decodeResource(r,R.drawable.mogura2);
+			bmp[0]=BitmapFactory.decodeResource(r,R.drawable.mogura3);
 			
 			//그래픽스의 생성
 			holder=getHolder();
@@ -51,6 +53,11 @@ public abstract class MoguraView extends SurfaceView
 		}
 		
 		//표면파괴
+		public void surfaceDestroyed(SurfaceHolder holder){
+			thread = null;
+		}
+		
+		//표면변경
 		public void surfaceChanged(SurfaceHolder holder, int format, int w, int h){
 		}
 		
@@ -93,6 +100,7 @@ public abstract class MoguraView extends SurfaceView
 				g.fillRect(0, 0, getWidth(),100);
 				g.setColor(Color.rgb(144, 198, 116));
 				g.fillRect(0,100,getWidth(),getHeight()-100);
+				g.drawBitmap(bmp[0], 0, 100);
 				
 				//두더지의 그리기
 				for(int i=0; i<moguras.size();i++) {
@@ -131,7 +139,7 @@ public abstract class MoguraView extends SurfaceView
 				
 				//메시지 그리기
 				if(scene==S_TITLE || scene==S_GAMEOVER) {
-					if(scene==S_TITLE) str="두더지 잡기";
+					if(scene==S_TITLE) str="닭다리 먹기";
 					if(scene==S_GAMEOVER) str="게임 종료";
 					g.setColor(Color.rgb(255, 0, 0));
 					g.setFontSize(80);
