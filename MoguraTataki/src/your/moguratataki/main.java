@@ -42,7 +42,7 @@ public class main extends Activity {
  
             	
             		
-            	//	startActivity(new Intent(main.this, 2번째게임클래스이름.class)); //2게임 실행
+            		startActivity(new Intent(main.this, CarbreakActivity.class)); //2게임 실행
             	 
             }
         });
