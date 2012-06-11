@@ -15,7 +15,7 @@ public class Mogura {
 	public Mogura(int x, int y) {
 		this.x=x;
 		this.y=y;
-		state=-MoguraView.rand(500);
+		state=-MoguraView.rand(5);
 	}
 	
 	//충돌 판정
@@ -31,7 +31,7 @@ public class Mogura {
 	public void tick() {
 		state++;
 		if(state==19 || state==39) {
-			state=-MoguraView.rand(500);
+			state=-MoguraView.rand(5);
 		}
 	}
 	
