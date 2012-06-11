@@ -25,6 +25,7 @@ public class MoguraView extends SurfaceView
 		private int init=S_TITLE; //초기화 (1)
 		private int scene; //장면(1)
 		private int score; //점수
+		private int High_score;
 		private long endTime; //종료시간
 		private ArrayList<Mogura> moguras; //두더지
 		private Bitmap[] bmp=new Bitmap[1];
@@ -74,6 +75,8 @@ public class MoguraView extends SurfaceView
 					
 					//타이틀 초기화
 					if(scene==S_TITLE) {
+						if(High_score<score)
+						High_score=score;
 						score=0;
 						moguras=new ArrayList<Mogura>();
 						int dy=80;
@@ -117,6 +120,14 @@ public class MoguraView extends SurfaceView
 				g.setFontSize(60);
 				g.drawString(str,(120-g.stringWidth(str))/2,80);
 				
+				g.setColor(Color.rgb(0, 0, 0));
+			    g.setFontSize(20);
+			    str="HighScore";
+			    g.drawString(str,(300-g.stringWidth(str))/2,20);
+			    str=""+High_score;
+			    g.setFontSize(60);
+			    g.drawString(str,(300-g.stringWidth(str))/2,80);
+			    
 				//시간그리기
 				g.setColor(Color.rgb(40, 40, 125));
 				g.setFontSize(20);
