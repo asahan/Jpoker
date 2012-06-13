@@ -3,6 +3,9 @@ package your.moguratataki;
 import android.content.*;
 //import android.content.res.*;
 import android.graphics.*;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.view.*;
 import java.util.ArrayList;
 
@@ -11,19 +14,22 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 	private final static int Title = 0;
 	private final static int Play =1;
 	private final static int Gameover= 2;
-	
+	private int tak;
 	private SurfaceHolder holder;
 	private Thread	thread;
 	private Graphics g;
-	
+	private MediaPlayer mp;
+	private SoundPool sp;
 	private int init = Title;
 	private int scene;
 	private int score;
+	private int High_score;
 	private long endTime;
 	private ArrayList<car_1st> car_1; 
 	private ArrayList<car_2nd> car_2; 
 	private ArrayList<car_3rd> car_3; 
 	private ArrayList<car_4th> car_4; 
+	private Bitmap[] bmp=new Bitmap[1];
 	public CarbreakView(Context context) {
 		super(context);
 		car_1st.bmp[0]=BitmapFactory.decodeResource(getResources(),R.drawable.car0_normal);
@@ -34,8 +40,10 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 		car_3rd.bmp[1]=BitmapFactory.decodeResource(getResources(),R.drawable.car2_crash);
 		car_4th.bmp[0]=BitmapFactory.decodeResource(getResources(),R.drawable.car3_normal);
 		car_4th.bmp[1]=BitmapFactory.decodeResource(getResources(),R.drawable.car3_crash);
-		
-		
+		bmp[0]=BitmapFactory.decodeResource(getResources(),R.drawable.car_image);
+		mp=MediaPlayer.create(context, R.raw.carbreakbgm);
+		sp = new SoundPool(1,AudioManager.STREAM_MUSIC,0);
+		tak=sp.load(context,R.raw.click_car,1);
 		//Car.bmp[0] = BitmapFactory.decodeResource(getResources(),R.drawable.car0_normal);
 		//Car.bmp[1] = BitmapFactory.decodeResource(getResources(),R.drawable.car0_crash);
 		/*
@@ -71,6 +79,8 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 				init = -1;
 				
 				if(scene == Title){
+					if(High_score<score)
+						High_score=score;
 					score = 0;
 					int x=150;
 					int y=115;
@@ -92,10 +102,11 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 				}
 			}
 			g.lock();
-			g.setColor(Color.rgb(88,197,241));
+			g.setColor(Color.rgb(221,223,220));
 			g.fillRect(0,0,getWidth(),100);
 			g.setColor(Color.rgb(144,198,116));
 			g.fillRect(0,100,getWidth(),getHeight()-100);
+			g.drawBitmap(bmp[0], 0, 100);
 			
 			car_1.get(0).draw(g);
 			car_2.get(0).draw(g);
@@ -108,6 +119,15 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 			str=""+score;
 			g.setFontSize(60);
 			g.drawString(str,(120-g.stringWidth(str))/2,80);
+			
+			g.setColor(Color.rgb(0, 0, 0));
+		    g.setFontSize(20);
+		    str="HighScore";
+		    g.drawString(str,(300-g.stringWidth(str))/2,20);
+		    str=""+High_score;
+		    g.setFontSize(60);
+		    g.drawString(str,(300-g.stringWidth(str))/2,80);
+		    
 			g.setColor(Color.rgb(40,40,125));
 			g.setFontSize(20);
 			str="Time";
@@ -149,29 +169,33 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 		if(touchAction==MotionEvent.ACTION_DOWN) {
 			if(scene==Title) {
 				init=Play;
+				mp.setLooping(true);
+				mp.start();
 			} else if(scene==Play){
+				
 					if(car_1.get(0).isHit(touchX,touchY))
-					{
+					{	sp.play(tak, 1,1,0,0,1);
 						car_1.get(0).touch_down();
 						score++;
 					}
 					else if(car_2.get(0).isHit(touchX,touchY))
-					{
+					{	sp.play(tak, 1,1,0,0,1);
 						car_2.get(0).touch_down();
 						score++;
 					}
 					else if(car_3.get(0).isHit(touchX,touchY))
-					{
+					{	sp.play(tak, 1,1,0,0,1);
 						car_3.get(0).touch_down();
 						score++;
 					}
 					else if(car_4.get(0).isHit(touchX,touchY))
-					{
+					{	sp.play(tak, 1,1,0,0,1);
 						car_4.get(0).touch_down();
 						score++;
 					}
 				
 			}else if(scene ==Gameover) {
+				mp.pause();
 					if(endTime<System.currentTimeMillis()) init=Title;
 			}
 		}

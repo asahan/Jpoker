@@ -3,6 +3,9 @@ package your.moguratataki;
 import android.content.res.*;
 import android.content.*;
 import android.graphics.*;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.view.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,7 +32,9 @@ public class MoguraView extends SurfaceView
 		private long endTime; //종료시간
 		private ArrayList<Mogura> moguras; //두더지
 		private Bitmap[] bmp=new Bitmap[1];
-		
+		private MediaPlayer mp;
+		private SoundPool sp;
+		private int tak;
 		//생성자
 		public MoguraView(Context context) {
 			super(context);
@@ -40,7 +45,9 @@ public class MoguraView extends SurfaceView
 			Mogura.bmp[1]=BitmapFactory.decodeResource(r, R.drawable.mogura1);
 			Mogura.bmp[2]=BitmapFactory.decodeResource(r,R.drawable.mogura2);
 			bmp[0]=BitmapFactory.decodeResource(r,R.drawable.mogura3);
-			
+			mp=MediaPlayer.create(context, R.raw.chickenbgm);
+			sp = new SoundPool(1,AudioManager.STREAM_MUSIC,0);
+			tak=sp.load(context,R.raw.click_gogi,1);
 			//그래픽스의 생성
 			holder=getHolder();
 			holder.addCallback(this);
@@ -175,11 +182,18 @@ public class MoguraView extends SurfaceView
 			if(touchAction==MotionEvent.ACTION_DOWN) {
 				if(scene==S_TITLE) {
 					init=S_PLAY;
+
+				mp.setLooping(true);
+				mp.start();
 				} else if (scene==S_PLAY) {
+					
 					for (int i=0; i<moguras.size(); i++) {
-						if(moguras.get(i).isHit(touchX,touchY)) score++;
+						if(moguras.get(i).isHit(touchX,touchY)) {
+							score++; sp.play(tak, 1,1,0,0,1);
+						}
 					}
 				} else if (scene==S_GAMEOVER) {
+					mp.pause();
 					if (endTime<System.currentTimeMillis()) init=S_TITLE;
 				}
 			}
