@@ -1,6 +1,7 @@
 package your.moguratataki;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ public class ongame extends Activity {
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setContentView(new MoguraView(this));
     }
+	
+	
 /*
 	@Override
 	public void onBackPressed() {
