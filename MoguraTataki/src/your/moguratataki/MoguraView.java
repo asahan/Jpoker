@@ -15,25 +15,72 @@ public class MoguraView extends SurfaceView
 	implements SurfaceHolder.Callback,Runnable {
 		//장면 정수 (1)
 		private final static int
-		S_TITLE    =0,
-		S_PLAY     =1,
-		S_GAMEOVER =2;
+		S_TITLE    =0;
+
+		private final static int S_PLAY     =1;
+
+		private final static int S_GAMEOVER =2;
 		
 		// 시스템
+		/**
+		 * @uml.property  name="holder"
+		 * @uml.associationEnd  multiplicity="(1 1)"
+		 */
 		private SurfaceHolder holder; //표면 홀더
+		/**
+		 * @uml.property  name="thread"
+		 */
 		private Thread        thread; //스레드
+		/**
+		 * @uml.property  name="g"
+		 * @uml.associationEnd  multiplicity="(1 1)"
+		 */
 		private Graphics      g; //그래픽스
 		
 		//게임
+		/**
+		 * @uml.property  name="init"
+		 */
 		private int init=S_TITLE; //초기화 (1)
+		/**
+		 * @uml.property  name="scene"
+		 */
 		private int scene; //장면(1)
+		/**
+		 * @uml.property  name="score"
+		 */
 		private int score; //점수
+		/**
+		 * @uml.property  name="high_score"
+		 */
 		private int High_score;
+		/**
+		 * @uml.property  name="endTime"
+		 */
 		private long endTime; //종료시간
+		/**
+		 * @uml.property  name="moguras"
+		 * @uml.associationEnd  multiplicity="(0 -1)" elementType="your.moguratataki.Mogura"
+		 */
 		private ArrayList<Mogura> moguras; //두더지
+		/**
+		 * @uml.property  name="bmp"
+		 * @uml.associationEnd  multiplicity="(0 -1)"
+		 */
 		private Bitmap[] bmp=new Bitmap[1];
+		/**
+		 * @uml.property  name="mp"
+		 * @uml.associationEnd  multiplicity="(1 1)"
+		 */
 		private MediaPlayer mp;
+		/**
+		 * @uml.property  name="sp"
+		 * @uml.associationEnd  multiplicity="(1 1)"
+		 */
 		private SoundPool sp;
+		/**
+		 * @uml.property  name="tak"
+		 */
 		private int tak;
 		//생성자
 		public MoguraView(Context context) {

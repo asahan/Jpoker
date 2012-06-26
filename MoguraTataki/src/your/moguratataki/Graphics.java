@@ -6,8 +6,20 @@ import android.graphics.Rect;
 import android.view.SurfaceHolder;
 
 public class Graphics {
+	/**
+	 * @uml.property  name="holder"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private SurfaceHolder holder;
+	/**
+	 * @uml.property  name="paint"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Paint         paint;
+	/**
+	 * @uml.property  name="canvas"
+	 * @uml.associationEnd  
+	 */
 	private Canvas        canvas;
 	
 	//그래픽스

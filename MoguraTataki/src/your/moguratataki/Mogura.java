@@ -7,8 +7,17 @@ public class Mogura {
 	public static Bitmap[] bmp=new Bitmap[3];
 	
 	//변수
+	/**
+	 * @uml.property  name="state"
+	 */
 	public int state; //(4)
+	/**
+	 * @uml.property  name="x"
+	 */
 	public int x;
+	/**
+	 * @uml.property  name="y"
+	 */
 	public int y;
 	
 	//생성자

@@ -6,7 +6,10 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Window;
 
-public class ongame extends Activity {
+/**
+ * @uml.dependency   supplier="your.moguratataki.main"
+ */
+public class ongame extends main {
 	@Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);

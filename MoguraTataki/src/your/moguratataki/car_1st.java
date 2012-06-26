@@ -9,10 +9,25 @@ public class car_1st {
 	public static final int touched=2;
 	
 	
+	/**
+	 * @uml.property  name="state"
+	 */
 	public int state;
+	/**
+	 * @uml.property  name="damage"
+	 */
 	public int damage;
+	/**
+	 * @uml.property  name="x"
+	 */
 	public int x;
+	/**
+	 * @uml.property  name="y"
+	 */
 	public int y;
+	/**
+	 * @uml.property  name="number"
+	 */
 	public int number;
 	public car_1st(int x, int y){
 		state = normal;

@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class main extends Activity {
+/**
+ * @uml.dependency   supplier="your.moguratataki.MoguraTatakiActivity"
+ */
+public class main extends MoguraTatakiActivity {
 
 	@Override
 	 

@@ -9,8 +9,15 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class MoguraTatakiActivity extends Activity {
-    /** Called when the activity is first created. */
+    /**
+	 * Called when the activity is first created.
+	 * @uml.property  name="handler"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	Handler handler;
+	/**
+	 * @uml.property  name="isFinished"
+	 */
 	boolean isFinished = true;
 
 	@Override

@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.graphics.PixelFormat;
 import android.view.Window;
 
-public class CarbreakActivity extends Activity {
+/**
+ * @uml.dependency   supplier="your.moguratataki.main"
+ */
+public class CarbreakActivity extends main {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {

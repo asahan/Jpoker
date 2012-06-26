@@ -14,21 +14,78 @@ public class CarbreakView extends SurfaceView implements SurfaceHolder.Callback,
 	private final static int Title = 0;
 	private final static int Play =1;
 	private final static int Gameover= 2;
+	/**
+	 * @uml.property  name="tak"
+	 */
 	private int tak;
+	/**
+	 * @uml.property  name="holder"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private SurfaceHolder holder;
+	/**
+	 * @uml.property  name="thread"
+	 */
 	private Thread	thread;
+	/**
+	 * @uml.property  name="g"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Graphics g;
+	/**
+	 * @uml.property  name="mp"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private MediaPlayer mp;
+	/**
+	 * @uml.property  name="sp"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private SoundPool sp;
+	/**
+	 * @uml.property  name="init"
+	 */
 	private int init = Title;
+	/**
+	 * @uml.property  name="scene"
+	 */
 	private int scene;
+	/**
+	 * @uml.property  name="score"
+	 */
 	private int score;
+	/**
+	 * @uml.property  name="high_score"
+	 */
 	private int High_score;
+	/**
+	 * @uml.property  name="endTime"
+	 */
 	private long endTime;
+	/**
+	 * @uml.property  name="car_1"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="your.moguratataki.car_1st"
+	 */
 	private ArrayList<car_1st> car_1; 
+	/**
+	 * @uml.property  name="car_2"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="your.moguratataki.car_2nd"
+	 */
 	private ArrayList<car_2nd> car_2; 
+	/**
+	 * @uml.property  name="car_3"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="your.moguratataki.car_3rd"
+	 */
 	private ArrayList<car_3rd> car_3; 
+	/**
+	 * @uml.property  name="car_4"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="your.moguratataki.car_4th"
+	 */
 	private ArrayList<car_4th> car_4; 
+	/**
+	 * @uml.property  name="bmp"
+	 * @uml.associationEnd  multiplicity="(0 -1)"
+	 */
 	private Bitmap[] bmp=new Bitmap[1];
 	public CarbreakView(Context context) {
 		super(context);
